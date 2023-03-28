@@ -1,4 +1,6 @@
 import React from "react";
+import Logo from "../../images/Logo.svg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 const Product = (props) => {
@@ -21,7 +23,7 @@ const Product = (props) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        <p>Price : {price}</p>
+        <p>Price : ${price}</p>
         <p className="mt-12">Manufacturer: {seller}</p>
         <p>Rating : {ratings} Star</p>
         <div className="card-actions">
