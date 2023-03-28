@@ -5,11 +5,15 @@ import { faTrashCan, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const Cart = ({ carts }) => {
   let totalPrice = 0;
   let totalShipping = 0;
+  let quantity = 0;
   
   for (const cart of carts) {
-    totalPrice = totalPrice + cart.price;
+    cart.quantity = cart.quantity || 1;
+    totalPrice = totalPrice + cart.price * cart.quantity;
     totalShipping = totalShipping + cart.shipping;
+    quantity = quantity + cart.quantity;
   }
+
   let tax = totalPrice * 7 / 100;
   let grandTotal = totalPrice + totalShipping + tax;
   
@@ -20,12 +24,12 @@ const Cart = ({ carts }) => {
       <hr className="mt-4" />
 
       <div className="mt-8 ml-4">
-        <h1 className="text-2xl mb-6">Selected Items : {carts.length}</h1>
+        <h1 className="text-2xl mb-6">Selected Items : {quantity}</h1>
         <h1 className="text-2xl mb-6">Total Price : ${totalPrice}</h1>
         <h1 className="text-2xl mb-6">
           Total Shipping Charge : ${totalShipping}
         </h1>
-        <h1 className="text-2xl mb-6">Tax : {tax.toFixed(2)}</h1>
+        <h1 className="text-2xl mb-6">Tax : ${tax.toFixed(2)}</h1>
         <h1 className="text-3xl mb-6">Grand Total : ${grandTotal.toFixed(2)}</h1>
       </div>
       <div className="text-center">
