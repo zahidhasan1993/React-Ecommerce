@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { clearLocalStorage } from "../../utilities/fakedb";
 
 const Cart = ({ carts }) => {
   let totalPrice = 0;
@@ -33,7 +34,7 @@ const Cart = ({ carts }) => {
         <h1 className="text-3xl mb-6">Grand Total : ${grandTotal.toFixed(2)}</h1>
       </div>
       <div className="text-center">
-      <button className="btn btn-error btn-wide text-white hover:bg-rose-900">Clear Cart <span className="ml-3"><FontAwesomeIcon icon={faTrashCan} /></span></button>
+      <button onClick={clearLocalStorage} className="btn btn-error btn-wide text-white hover:bg-rose-900">Clear Cart <span className="ml-3"><FontAwesomeIcon icon={faTrashCan} /></span></button>
       <button className="btn btn-wide mt-3 btn-accent text-white">Review Order <span className="ml-3"><FontAwesomeIcon icon={faArrowRight} /></span></button>
       </div>
     </div>

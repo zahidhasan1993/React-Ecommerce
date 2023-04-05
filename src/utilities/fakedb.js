@@ -35,10 +35,14 @@ const getShoppingCart = () => {
 const deleteShoppingCart = () => {
     localStorage.removeItem('shopping-cart');
 }
+const clearLocalStorage = () => {
+    localStorage.clear();
+}
 
 export {
     addToDb,
     removeFromDb,
     getShoppingCart,
-    deleteShoppingCart
+    deleteShoppingCart,
+    clearLocalStorage
 }

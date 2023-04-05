@@ -31,10 +31,10 @@ const Product = (props) => {
             onClick={() => handleAddToCart(props.product)}
             className="btn btn-info w-[100%]"
           >
-            Add To Cart{" "}
+            Add To Cart
             <span className="ml-4">
               <FontAwesomeIcon icon={faCartArrowDown} />
-            </span>{" "}
+            </span>
           </button>
         </div>
       </div>

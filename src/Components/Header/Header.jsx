@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../../images/Logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,16 +11,16 @@ const Header = () => {
       <div className="navbar-end hidden lg:flex mr-7">
         <ul className="menu menu-horizontal px-1 text-white">
           <li>
-            <a>Order</a>
+            <Link to="/">Shop</Link>
           </li>
           <li>
-            <a>Order Review</a>
+            <Link to="/order">Order</Link>
           </li>
           <li>
-            <a>Manage Inventory</a>
+            <Link to="inventory">Inventory</Link>
           </li>
           <li>
-            <a>Login</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>

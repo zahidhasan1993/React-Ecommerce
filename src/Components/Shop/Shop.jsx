@@ -31,12 +31,15 @@ const Shop = () => {
       
     }
     setCart(savedCart);
-  },[products])
+  },[products]);
+
+
   const handleAddToCart = (product) => {
     const cart2 = [...cart, product];
     setCart(cart2);
     const localStore = addToDb(product.id);
   };
+
   return (
     <div className="grid md:grid-cols-5 mt-16 gap-4">
       <div id="product" className="md:col-span-4 grid md:grid-cols-3 md:gap-4">
@@ -50,7 +53,7 @@ const Shop = () => {
       </div>
 
       <div id="check-out" className="bg-amber-500  rounded-lg">
-        <Cart carts={cart}></Cart>
+        <Cart carts={cart} ></Cart>
       </div>
     </div>
   );
