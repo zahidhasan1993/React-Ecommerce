@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -39,6 +42,11 @@ const Shop = () => {
     setCart(cart2);
     const localStore = addToDb(product.id);
   };
+  const handleClearCart = (id) =>{
+    setCart([]);
+    deleteShoppingCart();
+    
+  }
 
   return (
     <div className="grid md:grid-cols-5 mt-16 gap-4">
@@ -53,7 +61,8 @@ const Shop = () => {
       </div>
 
       <div id="check-out" className="bg-amber-500  rounded-lg">
-        <Cart carts={cart} ></Cart>
+        <Cart carts={cart} handleClearCart={handleClearCart}>
+        </Cart>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Cart from "../Cart/Cart"
-import { useLoaderData } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLoaderData } from "react-router-dom";
 import OrderDetails from "../orderDetails/OrderDetails";
 import { removeFromDb } from "../../utilities/fakedb";
 
@@ -17,7 +19,13 @@ const Order = () => {
         removeFromDb(id)
 
     }
-    console.log(localCart);
+    const handleClearCart = (id) =>{
+      setLocalCart([]);
+      deleteShoppingCart();
+
+      
+    }
+    // console.log(localCart);
   return (
     <div className="grid md:grid-cols-5 mt-16 gap-4">
       <div
@@ -30,7 +38,9 @@ const Order = () => {
       </div>
 
       <div id="check-out" className="bg-amber-500 rounded-lg">
-      <Cart carts={localCart}  ></Cart>
+      <Cart carts={localCart} handleClearCart={handleClearCart}>
+      <button className="btn btn-wide mt-3 btn-ghost text-white"><Link to="/checkout">Checkout</Link> <span className="ml-3"><FontAwesomeIcon icon={faArrowRight} /></span></button>
+      </Cart>
       </div>
     </div>
   );

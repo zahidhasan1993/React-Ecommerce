@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { clearLocalStorage } from "../../utilities/fakedb";
+import { Link } from "react-router-dom";
 
-const Cart = ({ carts }) => {
+const Cart = ({ carts,handleClearCart,children }) => {
   let totalPrice = 0;
   let totalShipping = 0;
   let quantity = 0;
+  // let singleCart = {};
   
   for (const cart of carts) {
     cart.quantity = cart.quantity || 1;
     totalPrice = totalPrice + cart.price * cart.quantity;
     totalShipping = totalShipping + cart.shipping;
     quantity = quantity + cart.quantity;
+    // singleCart = cart; 
   }
 
   let tax = totalPrice * 7 / 100;
@@ -34,8 +37,8 @@ const Cart = ({ carts }) => {
         <h1 className="text-3xl mb-6">Grand Total : ${grandTotal.toFixed(2)}</h1>
       </div>
       <div className="text-center">
-      <button onClick={clearLocalStorage} className="btn btn-error btn-wide text-white hover:bg-rose-900">Clear Cart <span className="ml-3"><FontAwesomeIcon icon={faTrashCan} /></span></button>
-      <button className="btn btn-wide mt-3 btn-accent text-white">Review Order <span className="ml-3"><FontAwesomeIcon icon={faArrowRight} /></span></button>
+      <button onClick={handleClearCart} className="btn btn-warning w-[100%] text-white hover:bg-rose-900">Clear Cart <span className="ml-3"><FontAwesomeIcon icon={faTrashCan} /></span></button>
+      {children}
       </div>
     </div>
   );

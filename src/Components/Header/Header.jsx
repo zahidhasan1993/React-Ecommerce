@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../../images/Logo.svg";
 import { Link } from "react-router-dom";
+import { UserData } from "../Providers/AuthProvider";
 
 const Header = () => {
+  const {user,logOut} = useContext(UserData);
+  const handleSignOut = () =>{
+    logOut()
+    .then(() => {
+      //signout successfull
+    })
+    .catch(()=> {
+      //an error happend
+    })
+  }
+  
   return (
     <div className="navbar bg-slate-900">
       <div className="navbar-start ml-7">
@@ -22,6 +34,12 @@ const Header = () => {
           <li>
             <Link to="/login">Login</Link>
           </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          {
+              user && <li>{user.email} <button onClick={handleSignOut} className="btn btn-error ml-4">Sign Out</button> </li>
+          }
         </ul>
       </div>
     </div>
