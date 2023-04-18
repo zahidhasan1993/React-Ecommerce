@@ -16,17 +16,20 @@ export const UserData = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loader,setLoader] = useState(true);
+  const [loader, setLoader] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
 
   const signUpWithEmail = (email, password) => {
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInWithEmail = (email, password) => {
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const signInGoogle = () => {
+    setLoader(true);
     return signInWithPopup(auth, googleProvider);
   };
   const logOut = () => {

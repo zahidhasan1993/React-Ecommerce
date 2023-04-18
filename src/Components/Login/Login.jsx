@@ -1,18 +1,23 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserData } from "../Providers/AuthProvider";
 
 const Login = () => {
   const { signInGoogle,signInWithEmail } = useContext(UserData);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location);
+
+  const newPath = location.state?.from?.pathname || "/";
+  console.log(newPath);
 
   const handleGoogleLogIn = () => {
     signInGoogle()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate('/')
+        navigate(newPath, {replace : true})
       })
       .catch((error) => {
         console.log(error.message);
@@ -29,7 +34,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         form.reset();
-        navigate('/')
+        navigate(newPath, {replace : true});
     })
     .catch(error => {
         console.log(error.message);
