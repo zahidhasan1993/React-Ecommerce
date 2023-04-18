@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserData } from "../Providers/AuthProvider";
 
 const Login = () => {
   const { signInGoogle,signInWithEmail } = useContext(UserData);
+
+  const navigate = useNavigate();
+
   const handleGoogleLogIn = () => {
     signInGoogle()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate('/')
       })
       .catch((error) => {
         console.log(error.message);
@@ -24,12 +28,15 @@ const Login = () => {
     .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        form.reset();
+        navigate('/')
     })
     .catch(error => {
         console.log(error.message);
     })
 
-    form.reset();
+    
+
   }
   return (
     <div className="hero min-h-screen bg-base-200">

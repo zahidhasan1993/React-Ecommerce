@@ -62,6 +62,7 @@ const Shop = () => {
 
       <div id="check-out" className="bg-amber-500  rounded-lg">
         <Cart carts={cart} handleClearCart={handleClearCart}>
+          <button className="btn w-[100%] mt-3 btn-ghost text-white"><Link to="/order">Order Review</Link></button>
         </Cart>
       </div>
     </div>

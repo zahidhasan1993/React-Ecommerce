@@ -39,7 +39,7 @@ const Order = () => {
 
       <div id="check-out" className="bg-amber-500 rounded-lg">
       <Cart carts={localCart} handleClearCart={handleClearCart}>
-      <button className="btn btn-wide mt-3 btn-ghost text-white"><Link to="/checkout">Checkout</Link> <span className="ml-3"><FontAwesomeIcon icon={faArrowRight} /></span></button>
+      <button className="btn w-[100%] mt-3 btn-ghost text-white"><Link to="/checkout">Checkout</Link> <span className="ml-3"><FontAwesomeIcon icon={faArrowRight} /></span></button>
       </Cart>
       </div>
     </div>
